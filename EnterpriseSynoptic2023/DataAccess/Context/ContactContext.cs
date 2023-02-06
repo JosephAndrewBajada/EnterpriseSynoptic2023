@@ -5,14 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
+
+
 namespace DataAccess.Context
 {
 
-    public class Context : DbContext
+    public class ContactContext : DbContext
     {
         //holds reference to both models
 
-        public Context(DbContextOptions<Context> options) : base(options)
+        public ContactContext(DbContextOptions<ContactContext> options) : base(options)
         {
 
         }

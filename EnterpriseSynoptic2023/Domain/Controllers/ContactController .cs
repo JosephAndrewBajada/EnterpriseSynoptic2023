@@ -1,18 +1,19 @@
-﻿using System;
+﻿using DataAccess.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Web;
-using System.Web.Mvc;
 
 
 namespace Domain.Models
 {
     public class ContactController : Controller
     {
-        private readonly IContactService _contactService;
+        private readonly IContactsRepository _contactService;
 
-        public ContactController(IContactService contactService)
+        public ContactController(IContactsRepository contactService)
         {
             _contactService = contactService;
         }
@@ -30,22 +31,16 @@ namespace Domain.Models
         }
 
         [HttpPost]
-        public ActionResult Create(Contact contact, HttpPostedFileBase picture)
+        public IActionResult Create(Contact contact)
         {
             if (ModelState.IsValid)
             {
-                if (picture != null && picture.ContentLength > 0)
-                {
-                    using (var reader = new System.IO.BinaryReader(picture.InputStream))
-                    {
-                        contact.Picture = reader.ReadBytes(picture.ContentLength);
-                    }
-                }
-                service.AddContact(contact);
-                return RedirectToAction("Index");
+                _contactService.AddContact(contact);
+                return RedirectToAction(nameof(Index));
             }
             return View(contact);
         }
+
     }
 }
 

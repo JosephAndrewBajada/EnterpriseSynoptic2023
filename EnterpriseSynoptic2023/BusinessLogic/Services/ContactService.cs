@@ -1,24 +1,29 @@
-﻿using System;
+﻿
+using DataAccess.Repositories;
+using Domain.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLogic
 {
-    public class ContactService : IContactService
+    public class ContactService
     {
-        private readonly IContactRepository _contactRepository;
+        private IContactsRepository repository;
 
-        public ContactService(IContactRepository contactRepository)
+        public ContactService(ContactRepository repository)
         {
-            _contactRepository = contactRepository;
+            this.repository = (IContactsRepository)repository;
         }
 
-        public IEnumerable<Contact> GetContacts()
+        public IQueryable<Contact> GetContacts()
         {
-            return _contactRepository.GetContacts();
+            return repository.GetContacts();
         }
 
         public void AddContact(Contact contact)
         {
-            _contactRepository.AddContact(contact);
+            repository.AddContact(contact);
         }
     }
 }

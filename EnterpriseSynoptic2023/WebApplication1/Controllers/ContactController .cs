@@ -38,7 +38,7 @@ namespace Domain.Models
                 _contactService.AddContact(contact);
                 return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(contact;
         }
 
     }

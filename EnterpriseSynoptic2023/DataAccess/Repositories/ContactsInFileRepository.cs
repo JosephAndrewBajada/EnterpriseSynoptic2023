@@ -36,6 +36,8 @@ namespace DataAccess.Repositories
             return JsonConvert.DeserializeObject<List<Contact>>(fileContents);
         }
 
+
+
         private void SaveContactsToFile()
         {
             // Serialize the List of Contact objects and write it to the file

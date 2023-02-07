@@ -14,7 +14,7 @@ namespace Domain.Models
         public string FirstName { get; set; }
         [StringLength(255)]
         public string LastName { get; set; }
-        [StringLength(100)]
+        [StringLength(15)]
         public string MobileNumber { get; set;}
 
         public byte[] Picture { get; set; }

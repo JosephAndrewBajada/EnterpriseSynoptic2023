@@ -11,7 +11,7 @@ namespace BusinessLogic
     {
         private IContactsRepository repository;
 
-        public ContactService(ContactRepository repository)
+        public ContactService(ContactsInFileRepository repository)
         {
             this.repository = (IContactsRepository)repository;
         }

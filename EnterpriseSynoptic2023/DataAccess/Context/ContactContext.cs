@@ -13,8 +13,6 @@ namespace DataAccess.Context
 
     public class ContactContext : DbContext
     {
-        //holds reference to both models
-
         public ContactContext(DbContextOptions<ContactContext> options) : base(options)
         {
 
